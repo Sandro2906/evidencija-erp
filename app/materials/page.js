@@ -1,4 +1,4 @@
-import { getMaterials, addMaterial, deleteMaterial } from '@/lib/actions/materialActions';
+import { getMaterials, addMaterial, deleteMaterial, updateMaterialStock } from '@/lib/actions/materialActions';
 
 export default async function MaterialsPage() {
   const materials = await getMaterials();
@@ -31,6 +31,30 @@ export default async function MaterialsPage() {
           <div className="flex items-end">
             <button type="submit" className="w-full bg-blue-600 text-white rounded-md p-2 font-medium hover:bg-blue-700 transition">
               Sacuvaj
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div className="bg-slate-800 p-6 rounded-xl shadow-sm border border-slate-700">
+        <h2 className="text-lg font-semibold mb-4 text-white">Ručna Korekcija Stanja Sirovine</h2>
+        <form action={updateMaterialStock} className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label className="block text-sm font-medium text-slate-300">Sirovina</label>
+            <input type="text" name="material_name" list="materials-list-corr" required className="text-black bg-slate-50 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" placeholder="Upišite naziv..." />
+            <datalist id="materials-list-corr">
+              {materials.map(m => (
+                <option key={m.id} value={m.name} />
+              ))}
+            </datalist>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-slate-300">Novo Stanje</label>
+            <input type="number" step="0.01" name="new_stock" required className="text-black bg-slate-50 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" />
+          </div>
+          <div className="flex items-end">
+            <button type="submit" className="w-full bg-yellow-600 text-white rounded-md p-2 font-medium hover:bg-yellow-700 transition">
+              Ažuriraj stanje
             </button>
           </div>
         </form>

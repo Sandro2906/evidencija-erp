@@ -15,7 +15,11 @@ export default async function PurchasesPage() {
 
       <div className="bg-slate-800 p-6 rounded-xl shadow-sm border border-slate-700">
         <h2 className="text-lg font-semibold mb-4 text-white">Evidentiraj Novu Nabavku</h2>
-        <form action={addPurchase} className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <form action={addPurchase} className="grid grid-cols-1 md:grid-cols-5 gap-4">
+          <div>
+            <label className="block text-sm font-medium text-slate-300">Datum</label>
+            <input type="date" name="entry_date" required defaultValue={new Date().toISOString().split('T')[0]} className="text-black bg-slate-50 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" />
+          </div>
           <div>
             <label className="block text-sm font-medium text-slate-300">Materijal</label>
             <input type="text" name="material_name" list="materials-list" required className="text-black bg-slate-50 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" placeholder="Npr. Drvo, Ekseri..." />
@@ -42,7 +46,7 @@ export default async function PurchasesPage() {
             <label className="block text-sm font-medium text-slate-300">Cijena po jedinici (KM)</label>
             <input type="number" step="0.01" name="price_per_unit" required className="text-black bg-slate-50 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" />
           </div>
-          <div className="md:col-span-4 flex justify-end">
+          <div className="md:col-span-5 flex justify-end">
             <button type="submit" className="bg-blue-600 text-white rounded-md px-6 py-2 font-medium hover:bg-blue-700 transition">
               Zabilježi Nabavku
             </button>
