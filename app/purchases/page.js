@@ -18,21 +18,21 @@ export default async function PurchasesPage() {
         <form action={addPurchase} className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div>
             <label className="block text-sm font-medium text-slate-300">Materijal</label>
-            <select name="material_id" required className="text-black bg-slate-50 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
-              <option value="">-- Izaberite --</option>
+            <input type="text" name="material_name" list="materials-list" required className="text-black bg-slate-50 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" placeholder="Npr. Drvo, Ekseri..." />
+            <datalist id="materials-list">
               {materials.map(m => (
-                <option key={m.id} value={m.id}>{m.name} ({m.unit_of_measure})</option>
+                <option key={m.id} value={m.name} />
               ))}
-            </select>
+            </datalist>
           </div>
           <div>
             <label className="block text-sm font-medium text-slate-300">Dobavljač (opciono)</label>
-            <select name="supplier_id" className="text-black bg-slate-50 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
-              <option value="">-- Ignoriši --</option>
+            <input type="text" name="supplier_name" list="suppliers-list" className="text-black bg-slate-50 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" placeholder="Ime dobavljača" />
+            <datalist id="suppliers-list">
               {suppliers.map(s => (
-                <option key={s.id} value={s.id}>{s.name}</option>
+                <option key={s.id} value={s.name} />
               ))}
-            </select>
+            </datalist>
           </div>
           <div>
             <label className="block text-sm font-medium text-slate-300">Količina</label>

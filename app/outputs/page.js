@@ -16,12 +16,12 @@ export default async function OutputsPage() {
         <form action={addOutput} className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div>
             <label className="block text-sm font-medium text-slate-300">Proizvod</label>
-            <select name="product_id" required className="text-black bg-slate-50 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
-              <option value="">-- Izaberite --</option>
+            <input type="text" name="product_name" list="products-list-outputs" required className="text-black bg-slate-50 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" placeholder="Ime gotovog proizvoda" />
+            <datalist id="products-list-outputs">
               {products.map(p => (
-                <option key={p.id} value={p.id}>{p.name} (Stanje: {p.stock_quantity})</option>
+                <option key={p.id} value={p.name} />
               ))}
-            </select>
+            </datalist>
           </div>
           <div>
             <label className="block text-sm font-medium text-slate-300">Vrsta Izlaza</label>

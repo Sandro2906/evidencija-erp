@@ -18,21 +18,21 @@ export default async function NormsPage() {
         <form action={addNorm} className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div>
             <label className="block text-sm font-medium text-slate-300">Proizvod</label>
-            <select name="product_id" required className="text-black bg-slate-50 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
-              <option value="">-- Izaberite Proizvod --</option>
+            <input type="text" name="product_name" list="products-list" required className="text-black bg-slate-50 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" placeholder="Npr. Sto, Stolica..." />
+            <datalist id="products-list">
               {products.map(p => (
-                <option key={p.id} value={p.id}>{p.name}</option>
+                <option key={p.id} value={p.name} />
               ))}
-            </select>
+            </datalist>
           </div>
           <div>
             <label className="block text-sm font-medium text-slate-300">Materijal u Sastavu</label>
-            <select name="material_id" required className="text-black bg-slate-50 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border">
-              <option value="">-- Izaberite Materijal --</option>
+            <input type="text" name="material_name" list="materials-list" required className="text-black bg-slate-50 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 p-2 border" placeholder="Upišite materijal" />
+            <datalist id="materials-list">
               {materials.map(m => (
-                <option key={m.id} value={m.id}>{m.name} ({m.unit_of_measure})</option>
+                <option key={m.id} value={m.name} />
               ))}
-            </select>
+            </datalist>
           </div>
           <div>
             <label className="block text-sm font-medium text-slate-300">Potrebna Količina za 1kom</label>
