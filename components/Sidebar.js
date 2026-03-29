@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { LayoutDashboard, Box, Users, Factory, ArrowRightLeft, Settings } from 'lucide-react';
+import { LayoutDashboard, Box, Users, Factory, ArrowRightLeft, Settings, LogOut } from 'lucide-react';
+import { logout } from '@/lib/actions/authActions';
 
 const navItems = [
   { name: 'Dashboard', href: '/', icon: LayoutDashboard },
@@ -14,9 +15,9 @@ const navItems = [
 
 export default function Sidebar() {
   return (
-    <aside className="w-64 bg-white border-r border-gray-200 h-full">
+    <aside className="w-64 bg-slate-800 border-r border-slate-700 h-full relative">
       <div className="p-6">
-        <h1 className="text-2xl font-bold text-gray-800">Mini ERP</h1>
+        <h1 className="text-2xl font-bold text-white">Mini ERP</h1>
       </div>
       <nav className="mt-6 flex flex-col gap-1 px-4">
         {navItems.map((item) => {
@@ -25,14 +26,23 @@ export default function Sidebar() {
             <Link
               key={item.href}
               href={item.href}
-              className="flex items-center gap-3 px-3 py-2 text-gray-700 rounded-lg hover:bg-gray-100 transition-colors"
+              className="flex items-center gap-3 px-3 py-2 text-slate-300 rounded-lg hover:bg-slate-700 hover:text-white transition-colors"
             >
-              <Icon size={20} className="text-gray-500" />
+              <Icon size={20} className="text-slate-400" />
               <span className="font-medium">{item.name}</span>
             </Link>
           );
         })}
       </nav>
+      
+      <div className="absolute bottom-0 w-64 p-4 border-t border-slate-700">
+        <form action={logout}>
+          <button type="submit" className="flex w-full items-center gap-3 px-3 py-2 text-slate-300 rounded-lg hover:bg-slate-700 hover:text-white transition-colors">
+            <LogOut size={20} className="text-slate-400" />
+            <span className="font-medium">Odjavi se</span>
+          </button>
+        </form>
+      </div>
     </aside>
   );
 }
