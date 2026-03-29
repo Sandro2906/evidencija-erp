@@ -1,10 +1,20 @@
 import { login } from '@/lib/actions/authActions';
 
-export default function LoginPage() {
+export default async function LoginPage(props) {
+  // Siguran nacin dohvatanja za Next 14 i 15
+  const searchParams = await props.searchParams;
+  const isError = searchParams?.error === 'true';
+
   return (
     <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
       <div className="bg-slate-800 p-8 rounded-2xl shadow-xl w-full max-w-md border border-slate-700">
         <h1 className="text-3xl font-bold text-center text-white mb-8">Prijava u ERP</h1>
+        
+        {isError && (
+          <div className="mb-6 bg-red-500/10 border border-red-500 text-red-500 p-3 rounded-lg text-sm text-center">
+            Pogrešno korisničko ime ili lozinka.
+          </div>
+        )}
         
         <form action={login} className="space-y-6">
           <div>
