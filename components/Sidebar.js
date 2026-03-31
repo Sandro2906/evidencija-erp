@@ -15,7 +15,7 @@ const navItems = [
 
 export default function Sidebar() {
   return (
-    <aside className="w-64 bg-slate-800 border-r border-slate-700 h-full relative">
+    <aside className="w-64 bg-slate-800 border-r border-slate-700 h-full relative print:hidden">
       <div className="p-6">
         <h1 className="text-2xl font-bold text-white">Mini ERP</h1>
       </div>
